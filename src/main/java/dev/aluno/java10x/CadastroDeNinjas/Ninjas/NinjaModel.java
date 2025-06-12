@@ -1,6 +1,9 @@
-package dev.aluno.java10x.CadastroDeNinjas;
+package dev.aluno.java10x.CadastroDeNinjas.Ninjas;
 
+import dev.aluno.java10x.CadastroDeNinjas.Missoes.MissaoModel;
 import jakarta.persistence.*;
+
+import java.util.List;
 
 //Anotations Entity e Table transformam a classe em uma entidade e uma tabela no BD
 @Entity
@@ -13,14 +16,16 @@ public class NinjaModel {
     private String nome;
     private String email;
     private int idade;
+    private List <MissaoModel> missoes;
 
     public NinjaModel() {
     }
 
-    public NinjaModel(String nome, String email, int idade) {
+    public NinjaModel(String nome, String email, int idade, List<MissaoModel> missoes) {
         this.nome = nome;
         this.email = email;
         this.idade = idade;
+        this.missoes = missoes;
     }
 
     public String getNome() {
@@ -47,12 +52,22 @@ public class NinjaModel {
         this.idade = idade;
     }
 
+    public List<MissaoModel> getMissoes() {
+        return missoes;
+    }
+
+    public void setMissoes(List<MissaoModel> missoes) {
+        this.missoes = missoes;
+    }
+
     @Override
     public String toString() {
         return "NinjaModel{" +
-                "email='" + email + '\'' +
-                ", idade=" + idade +
+                "id=" + id +
                 ", nome='" + nome + '\'' +
+                ", email='" + email + '\'' +
+                ", idade=" + idade +
+                ", missoes=" + missoes +
                 '}';
     }
 }

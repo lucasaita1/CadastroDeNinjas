@@ -1,4 +1,4 @@
-package dev.aluno.java10x.CadastroDeNinjas;
+package dev.aluno.java10x.CadastroDeNinjas.Ninjas;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
