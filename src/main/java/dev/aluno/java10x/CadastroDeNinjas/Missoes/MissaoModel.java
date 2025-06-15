@@ -17,7 +17,9 @@ public class MissaoModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(name = "nome_missoes")
     private String nome;
+    @Column(name = "dificuldade")
     private String dificuldade;
 
     //OneToMany Uma Missao pode ter vários ninjas ou uma lista de ninjas
