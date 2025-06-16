@@ -13,6 +13,8 @@ target/
 .springBeans
 .sts4-cache
 Dot.env
+data/
+
 
 ### IntelliJ IDEA ###
 .idea
