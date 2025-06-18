@@ -3,37 +3,34 @@ package dev.aluno.java10x.CadastroDeNinjas.Missoes;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping
+@RequestMapping("/missao")
 public class MissaoController {
 
-    //Adicionar Ninja (CREATE)
-    @PostMapping("/criarmissao")
+    //Get -- Manda Requisao para mostrar as missoes
+    @GetMapping("/listar")
+    public String listarMissao(){
+        return "Missao listada com sucesso";
+    }
+
+    //Post -- Manda Requisao para criar as missoes
+    //Adicionar Missao(CREATE)
+    @PostMapping("/criar")
     public String criarNinja(){
         return "Missao Criada";
     }
 
-    //MOSTRAR Ninja por ID (READ)
-    @GetMapping("/missoesID")
-    public String mostrarNinjasPorId(){
-        return "missoesID";
+    //Put -- Manda Requisao para alterar as missoes
+    //Alterar dados das missoes (UPTADE)
+    @PutMapping("alterar")
+    public String alterarMissoes(){
+        return "Alterar missoes";
     }
 
-    //VER TODOS NINJAS (READ)
-    @GetMapping("/missoes")
-    public String mostrarTodosNinjas(){
-        return "Todas missoes";
-    }
-
-    //Alterar dados dos ninjas (UPTADE)
-    @PutMapping("/modificarID")
-    public String alterarDadosDoNinja(){
-        return "Alterar missoes por ID";
-    }
-
-    //Deletar Ninjas (DELETE)
+    //Delete -- Manda Requisao para Deletar as missoes
+    //Deletar missao (DELETE)
     @DeleteMapping("/deletarmissoesID")
-    public String deletarNinjaPorId(){
-        return "Deletar missoes por Id";
+    public String deletarMissao(){
+        return "Missao Deletada";
     }
 
 }
