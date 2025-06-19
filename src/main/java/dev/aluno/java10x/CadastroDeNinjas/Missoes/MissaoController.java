@@ -21,7 +21,7 @@ public class MissaoController {
 
     //Put -- Manda Requisao para alterar as missoes
     //Alterar dados das missoes (UPTADE)
-    @PutMapping("alterar")
+    @PutMapping("/alterar")
     public String alterarMissoes(){
         return "Alterar missoes";
     }
