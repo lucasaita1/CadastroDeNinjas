@@ -19,16 +19,18 @@ public class NinjaController {
      return ("Essa é a minha primeira mensagem e rota");
     }
 
+    // ======== CRUD ========
+
+    //Adicionar Ninja (CREATE)
+    @PostMapping("/criar")
+    public NinjaModel criarNinja(@RequestBody NinjaModel ninja){
+        return ninjaService.criarNinja(ninja);
+    }
+
     //VER TODOS NINJAS (READ)
     @GetMapping("/listar")
     public List<NinjaModel> listarNinja (){
         return ninjaService.listarNinja();
-    }
-
-    //Adicionar Ninja (CREATE)
-    @PostMapping("/criar")
-    public String criarNinja(){
-        return "Ninja Criado";
     }
 
     //MOSTRAR Ninja por ID (READ)
@@ -39,13 +41,13 @@ public class NinjaController {
     }
 
     //Alterar dados dos ninjas (UPTADE)
-    @PutMapping("/alterarID")
+    @PutMapping("/alterar/{id}")
     public String alterarDadosDoNinja(){
         return "Alterar ninja por ID";
     }
 
     //Deletar Ninjas (DELETE)
-    @DeleteMapping("/deletarID")
+    @DeleteMapping("/deletar/{id}")
     public String deletarNinjaPorId(){
         return "Deletar ninja por Id";
     }
