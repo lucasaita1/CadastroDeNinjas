@@ -29,9 +29,9 @@ public class MissaoController {
 
     //Put -- Manda Requisao para alterar as missoes
     //Alterar dados das missoes (UPTADE)
-    @PutMapping("/alterar")
-    public String alterarMissoes(){
-        return "Alterar missoes";
+    @PutMapping("/alterar/{id}")
+    public MissaoModel alterarMissoes(@PathVariable Long id, @RequestBody MissaoModel missaoAtualizada){
+        return missaoService.alterarMissoes(id, missaoAtualizada);
     }
 
     //Delete -- Manda Requisao para Deletar as missoes
