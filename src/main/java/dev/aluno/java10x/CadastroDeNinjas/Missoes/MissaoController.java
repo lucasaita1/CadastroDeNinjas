@@ -2,21 +2,29 @@ package dev.aluno.java10x.CadastroDeNinjas.Missoes;
 
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/missao")
 public class MissaoController {
 
+    private MissaoService missaoService;
+
+    public MissaoController(MissaoService missaoService) {
+        this.missaoService = missaoService;
+    }
+
     //Get -- Manda Requisao para mostrar as missoes
     @GetMapping("/listar")
-    public String listarMissao(){
-        return "Missao listada com sucesso";
+    public List<MissaoModel> listarMissao(){
+        return missaoService.listarMissoes();
     }
 
     //Post -- Manda Requisao para criar as missoes
     //Adicionar Missao(CREATE)
     @PostMapping("/criar")
-    public String criarNinja(){
-        return "Missao Criada";
+    public MissaoModel criarMissoes (@RequestBody MissaoModel missao){
+        return missaoService.criarMissoes(missao);
     }
 
     //Put -- Manda Requisao para alterar as missoes
@@ -28,9 +36,9 @@ public class MissaoController {
 
     //Delete -- Manda Requisao para Deletar as missoes
     //Deletar missao (DELETE)
-    @DeleteMapping("/deletarmissoesID")
-    public String deletarMissao(){
-        return "Missao Deletada";
+    @DeleteMapping("/deletar/{id}")
+    public void deletarMissao (@PathVariable Long id){
+        missaoService.deletarMissoes(id);
     }
 
 }
