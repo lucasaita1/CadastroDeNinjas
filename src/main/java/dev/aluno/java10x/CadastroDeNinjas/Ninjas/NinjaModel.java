@@ -24,6 +24,8 @@ public class NinjaModel {
     private String email;
     @Column(name = "idade")
     private int idade;
+    @Column(name = "rank")
+    private String rank;
 
     //@ManyToOne Ninja só pode ter uma missao
     @ManyToOne
