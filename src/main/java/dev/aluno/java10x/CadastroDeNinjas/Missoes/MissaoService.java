@@ -19,7 +19,7 @@ public class MissaoService {
     }
 
     //listar missoes
-    public List<MissaoDTO> listarMissoes (){
+    public List<MissaoDTO> listarMissoes() {
         List<MissaoModel> missoes = missaoRepository.findAll();
         return missoes.stream()
                 .map(missaoMapper::map)
@@ -28,17 +28,17 @@ public class MissaoService {
     }
 
     //criar missoes
-     public MissaoDTO criarMissoes(MissaoDTO missao){
-         MissaoModel missaoModel = missaoMapper.map(missao);
-         missaoRepository.save(missaoModel);
-         return missaoMapper.map(missaoModel);
+    public MissaoDTO criarMissoes(MissaoDTO missao) {
+        MissaoModel missaoModel = missaoMapper.map(missao);
+        missaoRepository.save(missaoModel);
+        return missaoMapper.map(missaoModel);
 
-     }
+    }
 
-     //editar missoes
-    public MissaoDTO alterarMissoes (Long id, MissaoDTO missaoDTO){
+    //editar missoes
+    public MissaoDTO alterarMissoes(Long id, MissaoDTO missaoDTO) {
         Optional<MissaoModel> missaoExistente = missaoRepository.findById(id);
-        if (missaoExistente.isPresent()){
+        if (missaoExistente.isPresent()) {
             MissaoModel missaoAtualizada = missaoMapper.map(missaoDTO);
             missaoAtualizada.setId(id);
             MissaoModel missaoSalva = missaoRepository.save(missaoAtualizada);
@@ -48,7 +48,8 @@ public class MissaoService {
     }
 
     //deletar missoes
-    public void deletarMissoes (Long id) {
+  public void deletarMissoes(Long id){
         missaoRepository.deleteById(id);
-    }
+  }
 }
+
