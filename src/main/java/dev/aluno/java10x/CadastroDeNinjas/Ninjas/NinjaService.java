@@ -1,6 +1,7 @@
 package dev.aluno.java10x.CadastroDeNinjas.Ninjas;
 
 import jakarta.persistence.Id;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -26,7 +27,7 @@ public class NinjaService {
                 .collect(Collectors.toList());
     }
 
-    //Listar todos ninjas por ID
+    //Listar ninjas por ID
     public NinjaDTO listarNinjasPorId(Long id){
        Optional<NinjaModel> ninjaPorId = ninjaRepository.findById(id);
        return ninjaPorId.map(ninjaMapper::map).orElse(null);
