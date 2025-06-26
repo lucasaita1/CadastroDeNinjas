@@ -1,4 +1,5 @@
 package dev.aluno.java10x.CadastroDeNinjas.Ninjas;
+
 import dev.aluno.java10x.CadastroDeNinjas.Missoes.MissaoModel;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

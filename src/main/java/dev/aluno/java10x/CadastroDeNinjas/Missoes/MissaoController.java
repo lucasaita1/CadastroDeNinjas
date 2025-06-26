@@ -13,12 +13,10 @@ import java.util.Optional;
 @RequestMapping("/missao")
 public class MissaoController {
 
-    private MissaoService missaoService;
-    private MissaoRepository missaoRepository;
+    private final MissaoService missaoService;
 
-    public MissaoController(MissaoService missaoService, MissaoRepository missaoRepository) {
+    public MissaoController(MissaoService missaoService) {
         this.missaoService = missaoService;
-        this.missaoRepository = missaoRepository;
     }
 
     //Get -- Manda Requisao para mostrar as missoes
