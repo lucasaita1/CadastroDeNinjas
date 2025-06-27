@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Tabela de Ninjas</title>
+    <style>
+        body {
+            background-color: #111;
+            color: #eee;
+            font-family: 'Segoe UI', sans-serif;
+            padding: 20px;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: flex-end;
+            background-color: #1c1c1c;
+            padding: 10px 20px;
+            margin-bottom: 20px;
+        }
+
+        .login-btn {
+            color: #00ff99;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 8px 16px;
+            border: 2px solid #00ff99;
+            border-radius: 8px;
+            transition: background 0.3s ease;
+        }
+
+        .login-btn:hover {
+            background-color: #00ff99;
+            color: #111;
+        }
+
+        h1 {
+            color: #00ff99;
+            text-align: center;
+        }
+
+        .btn-adicionar {
+            display: inline-block;
+            margin: 20px 0;
+            background-color: #00ff99;
+            color: #111;
+            padding: 10px 20px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+        }
+
+        .btn-adicionar:hover {
+            background-color: #00cc7a;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #1e1e1e;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: center;
+            border-bottom: 1px solid #333;
+        }
+
+        th {
+            background-color: #00ff99;
+            color: #111;
+        }
+
+        td img {
+            border-radius: 8px;
+        }
+
+        a {
+            color: #00ff99;
+            text-decoration: none;
+            margin: 0 5px;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .mensagem {
+            text-align: center;
+            color: #ff5555;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="navbar">
+    <a href="/login" class="login-btn">Entrar / Cadastrar</a>
+</div>
+
+<h1>Lista de ninjas</h1>
+
+<a class="btn-adicionar" th:href="@{/ninja/ui/adicionar}">Adicionar Novo Ninja</a>
+
+<table>
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Imagem</th>
+        <th>Nome</th>
+        <th>Idade</th>
+        <th>Email</th>
+        <th>Rank</th>
+        <th>Missões</th>
+        <th>Ações</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="ninja : ${ninjas}">
+        <td th:text="${ninja.id}"></td>
+        <td><img th:src="${ninja.imgUrl}" width="80" height="80" /></td>
+        <td th:text="${ninja.nome}"></td>
+        <td th:text="${ninja.idade}"></td>
+        <td th:text="${ninja.email}"></td>
+        <td th:text="${ninja.rank}"></td>
+        <td>
+            <span th:if="${ninja.missoes != null}">
+                <span th:text="${ninja.missoes.nome}"></span>,
+                Dificuldade: <span th:text="${ninja.missoes.dificuldade}"></span>
+            </span>
+            <span th:if="${ninja.missoes == null}">Sem Missões</span>
+        </td>
+        <td>
+            <a th:href="@{/ninja/ui/listar/{id}(id=${ninja.id})}">Detalhes</a> |
+            <a th:href="@{/ninja/ui/deletar/{id}(id=${ninja.id})}">Deletar</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<div class="mensagem" th:if="${mensagem != null}" th:text="${mensagem}"></div>
+
+</body>
+</html>

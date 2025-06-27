@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Detalhes do Ninja</title>
+    <style>
+        body {
+            background-color: #111;
+            color: #eee;
+            font-family: 'Segoe UI', sans-serif;
+            padding: 20px;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: flex-end;
+            background-color: #1c1c1c;
+            padding: 10px 20px;
+            margin-bottom: 20px;
+        }
+
+        .login-btn {
+            color: #00ff99;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 8px 16px;
+            border: 2px solid #00ff99;
+            border-radius: 8px;
+            transition: background 0.3s ease;
+        }
+
+        .login-btn:hover {
+            background-color: #00ff99;
+            color: #111;
+        }
+
+        h1 {
+            text-align: center;
+            color: #00ff99;
+        }
+
+        .card {
+            background-color: #1e1e1e;
+            border-radius: 10px;
+            padding: 30px;
+            max-width: 600px;
+            margin: 0 auto;
+            box-shadow: 0 0 15px #00ff9988;
+        }
+
+        .card img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 10px;
+            display: block;
+            margin: 0 auto 20px;
+        }
+
+        .info {
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+        .info span {
+            color: #00ff99;
+            font-weight: bold;
+        }
+
+        .btn-voltar {
+            display: block;
+            text-align: center;
+            margin-top: 30px;
+            background-color: #00ff99;
+            color: #111;
+            padding: 10px 20px;
+            font-weight: bold;
+            border-radius: 6px;
+            text-decoration: none;
+            width: fit-content;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn-voltar:hover {
+            background-color: #00cc7a;
+        }
+    </style>
+</head>
+<body>
+
+<div class="navbar">
+    <a href="/login" class="login-btn">Entrar / Cadastrar</a>
+</div>
+
+<h1>Detalhes do Ninja</h1>
+
+<div class="card" th:if="${ninja != null}">
+    <img th:src="${ninja.imgUrl}" alt="Imagem do ninja" />
+    <div class="info">
+        <p><span>ID:</span> <span th:text="${ninja.id}"></span></p>
+        <p><span>Nome:</span> <span th:text="${ninja.nome}"></span></p>
+        <p><span>Idade:</span> <span th:text="${ninja.idade}"></span></p>
+        <p><span>Email:</span> <span th:text="${ninja.email}"></span></p>
+        <p><span>Rank:</span> <span th:text="${ninja.rank}"></span></p>
+        <p th:if="${ninja.missoes != null}">
+            <span>Missão:</span> <span th:text="${ninja.missoes.nome}"></span>,
+            Dificuldade: <span th:text="${ninja.missoes.dificuldade}"></span>
+        </p>
+        <p th:if="${ninja.missoes == null}"><span>Missões:</span> Nenhuma missão cadastrada</p>
+    </div>
+</div>
+
+<div th:if="${ninja == null}" style="text-align:center; color:#ff4444;">
+    Ninja não encontrado.
+</div>
+
+<a class="btn-voltar" href="/ninja/ui/listar">← Voltar para lista</a>
+
+</body>
+</html>
