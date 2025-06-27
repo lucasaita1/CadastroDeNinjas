@@ -27,7 +27,7 @@ public class NinjaControllerUi {
     @GetMapping("/deletar/{id}")
     public String deletarNinjaPorId(@PathVariable Long id) {
         ninjaService.deletarNinjaId(id);
-        return "redirect:/ninjas/ui/listar";
+        return "redirect:/ninja/ui/listar";
     }
 
     @GetMapping("/listar/{id}")
@@ -52,7 +52,7 @@ public class NinjaControllerUi {
     public String salvarNinja(@ModelAttribute NinjaDTO ninja, RedirectAttributes redirectAttributes) {
         ninjaService.criarNinja(ninja);
         redirectAttributes.addFlashAttribute("mensagem", "Ninja cadastrado com sucesso!");
-        return "redirect:/ninjas/ui/listar";
+        return "redirect:/ninja/ui/listar";
     }
 
 }
