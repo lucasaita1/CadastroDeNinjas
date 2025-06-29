@@ -68,7 +68,7 @@ public class NinjaController {
 
     //Alterar dados dos ninjas (UPTADE)
     @PutMapping("/alterar/{id}")
-    @Operation(summary = "Altera ninja por Id", description = "Usuario altera caracteristicas do Ninja do Id escolhido")
+    @Operation(summary = "Altera ninja por Id", description = "Usuario altera caracteristicas do Ninja do Id inserido")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Ninja alterado com sucesso!"),
             @ApiResponse(responseCode = "422", description = "Ninja nao foi encontrado ou nao existe no banco de dados!")
